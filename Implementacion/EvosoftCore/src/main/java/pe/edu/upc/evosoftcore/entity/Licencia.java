@@ -7,7 +7,7 @@
 package pe.edu.upc.evosoftcore.entity;
 
 import java.sql.Date;
-
+ 
 /**
  *
  * @author Jean Carlo
