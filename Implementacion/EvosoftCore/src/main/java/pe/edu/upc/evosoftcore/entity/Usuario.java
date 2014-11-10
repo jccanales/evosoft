@@ -7,7 +7,7 @@
 package pe.edu.upc.evosoftcore.entity;
 
 /**
- * 
+ *
  * @author Jean Carlo
  */
 public class Usuario {

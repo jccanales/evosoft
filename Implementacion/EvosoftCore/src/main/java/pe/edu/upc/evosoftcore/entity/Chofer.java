@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package pe.edu.upc.evosoftcore.entity;
 
 /**
@@ -11,7 +10,7 @@ package pe.edu.upc.evosoftcore.entity;
  * @author Jean Carlo
  */
 public class Chofer {
-    
+
     private int idChofer;
     private Licencia licencia;
     private String nombre;
@@ -40,7 +39,7 @@ public class Chofer {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    } 
+    }
 
     public String getApellido() {
         return apellido;
@@ -57,6 +56,13 @@ public class Chofer {
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "[ID=" + idChofer + "]\n"
+                + "[NOMBRE=" + nombre + "]\n"
+                + "[APELLIDO=" + apellido + "]\n"
+                + "[TELEFONO=" + idChofer + "]\n";
+    }
+
 }
