@@ -59,10 +59,10 @@ public class Chofer {
 
     @Override
     public String toString() {
-        return "[ID=" + idChofer + "]\n"
-                + "[NOMBRE=" + nombre + "]\n"
-                + "[APELLIDO=" + apellido + "]\n"
-                + "[TELEFONO=" + idChofer + "]\n";
+        return "[ID=" + idChofer + "]"
+                + "[NOMBRE=" + nombre + "]"
+                + "[APELLIDO=" + apellido + "]"
+                + "[TELEFONO=" + idChofer + "]";
     }
 
 }
