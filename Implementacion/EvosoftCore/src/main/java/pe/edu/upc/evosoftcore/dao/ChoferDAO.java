@@ -18,5 +18,6 @@ public interface ChoferDAO {
     public void insert(Chofer chofer);
     public Chofer findByChoferId(int choferId);
     public List<Chofer> listChofer();
+    public void update(Chofer choferUpdate);
     
 }

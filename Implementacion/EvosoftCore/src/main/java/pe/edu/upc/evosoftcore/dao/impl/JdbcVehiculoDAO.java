@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package pe.edu.upc.evosoftcore.dao.impl;
 
 import java.sql.Connection;
@@ -12,25 +13,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
-import pe.edu.upc.evosoftcore.dao.ChoferDAO;
+import pe.edu.upc.evosoftcore.dao.VehiculoDAO;
 import pe.edu.upc.evosoftcore.entity.Chofer;
 import pe.edu.upc.evosoftcore.entity.Licencia;
+import pe.edu.upc.evosoftcore.entity.Vehiculo;
 
 /**
  *
- * @author Jean Carlo
+ * @author Diego
  */
-public class JdbcChoferDAO implements ChoferDAO {
-
-    private DataSource dataSource;
-
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
+public class JdbcVehiculoDAO implements VehiculoDAO {
+    private DataSource datasource;
+    
+    public void setDataSource(DataSource dataSource){
+        this.datasource = dataSource;
     }
-
-    @Override
-    public void insert(Chofer chofer) {
-        String sql = "INSERT INTO chofer "
+    
+     @Override
+    public void insert(Vehiculo vehiculo) {
+        String sql = "INSERT INTO vehiculo "
                 + "(idchofer, idlicencia, nombre, apellido, telefono) VALUES (?,?,?,?,?)";
 
         Connection conn = null;
@@ -38,8 +39,8 @@ public class JdbcChoferDAO implements ChoferDAO {
         try {
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareCall(sql);
-            ps.setInt(1, chofer.getIdChofer());
-            ps.setInt(2, chofer.getLicencia().getIdLicencia());
+            ps.setInt(1, vehiculo.getCantidadEjes());
+            ps.setInt(2, vehiculo.getIdVehiculo());
             ps.setString(3, chofer.getNombre());
             ps.setString(4, chofer.getApellido());
             ps.setInt(5, chofer.getTelefono());
@@ -134,31 +135,25 @@ public class JdbcChoferDAO implements ChoferDAO {
     }
 
     @Override
-    public void update(Chofer choferUpdate){
-        String sql = "Update chofer "
-                + "(idchofer, idlicencia, nombre, apellido, telefono) VALUES (?,?,?,?,?)";
-
-        Connection conn = null;
-
-        try {
-            conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareCall(sql);
-            ps.setInt(1, choferUpdate.getIdChofer());
-            ps.setInt(2, choferUpdate.getLicencia().getIdLicencia());
-            ps.setString(3, choferUpdate.getNombre());
-            ps.setString(4, choferUpdate.getApellido());
-            ps.setInt(5, choferUpdate.getTelefono());
-            ps.executeUpdate();
-            ps.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                }
-            }
-        }
+    public void insert(Vehiculo vehiculo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Vehiculo findByVehiculoId(int vehiculoId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Vehiculo> listVehiclo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(Vehiculo VehiculoUpdate) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
 }
