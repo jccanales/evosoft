@@ -138,34 +138,20 @@ public class JdbcChoferDAO implements ChoferDAO {
     }
 
     @Override
-<<<<<<< HEAD
-    public void update(Chofer choferUpdate){
-        String sql = "Update chofer "
-                + "(idchofer, idlicencia, nombre, apellido, telefono) VALUES (?,?,?,?,?)";
-=======
     public void update(Chofer chofer) {
          String sql = "UPDATE chofer SET idlicencia=?, nombre=?, apellido=?, telefono=? "
                  + "WHERE idchofer=?";
->>>>>>> origin/master
 
         Connection conn = null;
 
         try {
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareCall(sql);
-<<<<<<< HEAD
-            ps.setInt(1, choferUpdate.getIdChofer());
-            ps.setInt(2, choferUpdate.getLicencia().getIdLicencia());
-            ps.setString(3, choferUpdate.getNombre());
-            ps.setString(4, choferUpdate.getApellido());
-            ps.setInt(5, choferUpdate.getTelefono());
-=======
             ps.setInt(1, chofer.getLicencia().getIdLicencia());
             ps.setString(2, chofer.getNombre());
             ps.setString(3, chofer.getApellido());
             ps.setInt(4, chofer.getTelefono());
             ps.setInt(5, chofer.getIdChofer());
->>>>>>> origin/master
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
@@ -179,8 +165,6 @@ public class JdbcChoferDAO implements ChoferDAO {
             }
         }
     }
-<<<<<<< HEAD
-=======
 
     @Override
     public void delete(Chofer chofer) {
@@ -204,6 +188,4 @@ public class JdbcChoferDAO implements ChoferDAO {
             }
         }
     }
-
->>>>>>> origin/master
 }

@@ -20,6 +20,5 @@ public interface ChoferDAO {
     public void delete(Chofer chofer);
     public Chofer findByChoferId(int choferId);
     public List<Chofer> listChofer();
-    public void update(Chofer choferUpdate);
     
 }

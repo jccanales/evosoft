@@ -23,16 +23,16 @@ import pe.edu.upc.evosoftcore.entity.Vehiculo;
  * @author Diego
  */
 public class JdbcVehiculoDAO implements VehiculoDAO {
-    private DataSource datasource;
+    private DataSource dataSource;
     
     public void setDataSource(DataSource dataSource){
-        this.datasource = dataSource;
+        this.dataSource = dataSource;
     }
-    
+    /*
      @Override
     public void insert(Vehiculo vehiculo) {
         String sql = "INSERT INTO vehiculo "
-                + "(idchofer, idlicencia, nombre, apellido, telefono) VALUES (?,?,?,?,?)";
+                + "(idvehiculo, idlicencia, nombre, apellido, telefono) VALUES (?,?,?,?,?)";
 
         Connection conn = null;
 
@@ -41,9 +41,9 @@ public class JdbcVehiculoDAO implements VehiculoDAO {
             PreparedStatement ps = conn.prepareCall(sql);
             ps.setInt(1, vehiculo.getCantidadEjes());
             ps.setInt(2, vehiculo.getIdVehiculo());
-            ps.setString(3, chofer.getNombre());
-            ps.setString(4, chofer.getApellido());
-            ps.setInt(5, chofer.getTelefono());
+            ps.setString(3, vehiculo.getNombre());
+            ps.setString(4, vehiculo.getApellido());
+            ps.setInt(5, vehiculo.getTelefono());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
@@ -59,30 +59,30 @@ public class JdbcVehiculoDAO implements VehiculoDAO {
     }
     
     @Override
-    public Chofer findByChoferId(int choferId) {
-        String sql = "SELECT * FROM chofer WHERE idchofer = ?";
+    public Chofer findByChoferId(int vehiculoId) {
+        String sql = "SELECT * FROM vehiculo WHERE idvehiculo = ?";
 
         Connection conn = null;
 
         try {
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareCall(sql);
-            ps.setInt(1, choferId);
-            Chofer chofer = null;
+            ps.setInt(1, vehiculoId);
+            Chofer vehiculo = null;
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                chofer = new Chofer();
-                chofer.setIdChofer(rs.getInt("idchofer"));
-                chofer.setNombre(rs.getString("nombre"));
-                chofer.setApellido(rs.getString("apellido"));
-                chofer.setTelefono(rs.getInt("telefono"));
+                vehiculo = new Chofer();
+                vehiculo.setIdChofer(rs.getInt("idvehiculo"));
+                vehiculo.setNombre(rs.getString("nombre"));
+                vehiculo.setApellido(rs.getString("apellido"));
+                vehiculo.setTelefono(rs.getInt("telefono"));
                 Licencia licencia = new Licencia();
                 licencia.setIdLicencia(rs.getInt("idlicencia"));
-                chofer.setLicencia(licencia);
+                vehiculo.setLicencia(licencia);
             }
             rs.close();
             ps.close();
-            return chofer;
+            return vehiculo;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -97,31 +97,31 @@ public class JdbcVehiculoDAO implements VehiculoDAO {
 
     @Override
     public List<Chofer> listChofer() {
-        String sql = "SELECT * FROM chofer";
-        List<Chofer> choferes = null;
+        String sql = "SELECT * FROM vehiculo";
+        List<Chofer> vehiculoes = null;
 
         Connection conn = null;
         
         try {
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareCall(sql);
-            Chofer chofer = null;
+            Chofer vehiculo = null;
             ResultSet rs = ps.executeQuery();
-            choferes = new ArrayList<Chofer>();
+            vehiculoes = new ArrayList<Chofer>();
             while (rs.next()) {
-                chofer = new Chofer();
-                chofer.setIdChofer(rs.getInt("idchofer"));
-                chofer.setNombre(rs.getString("nombre"));
-                chofer.setApellido(rs.getString("apellido"));
-                chofer.setTelefono(rs.getInt("telefono"));
+                vehiculo = new Chofer();
+                vehiculo.setIdChofer(rs.getInt("idvehiculo"));
+                vehiculo.setNombre(rs.getString("nombre"));
+                vehiculo.setApellido(rs.getString("apellido"));
+                vehiculo.setTelefono(rs.getInt("telefono"));
                 Licencia licencia = new Licencia();
                 licencia.setIdLicencia(rs.getInt("idlicencia"));
-                chofer.setLicencia(licencia);
-                choferes.add(chofer);
+                vehiculo.setLicencia(licencia);
+                vehiculoes.add(vehiculo);
             }
             rs.close();
             ps.close();
-            return choferes;
+            return vehiculoes;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -133,7 +133,7 @@ public class JdbcVehiculoDAO implements VehiculoDAO {
             }
         }
     }
-
+*/
     @Override
     public void insert(Vehiculo vehiculo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
