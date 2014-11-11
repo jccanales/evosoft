@@ -1,54 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package pe.edu.upc.evosoftcore.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
-import pe.edu.upc.evosoftcore.dao.VehiculoDAO;
-import pe.edu.upc.evosoftcore.entity.Chofer;
+import pe.edu.upc.evosoftcore.dao.LicenciaDAO;
 import pe.edu.upc.evosoftcore.entity.Licencia;
-import pe.edu.upc.evosoftcore.entity.Vehiculo;
 
 /**
  *
  * @author Diego
  */
-public class JdbcVehiculoDAO implements VehiculoDAO {
+public class JdbcLicenciaDAO implements LicenciaDAO {
+
     private DataSource dataSource;
-    
-    public void setDataSource(DataSource dataSource){
+
+    public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-    
+
     @Override
-    public void insert(Vehiculo vehiculo) {
+    public void insert(Licencia licencia) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Vehiculo findByVehiculoId(int vehiculoId) {
+    public Licencia findByVehiculoId(int licenciaID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Vehiculo> listVehiclo() {
+    public List<Licencia> listLicencia() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(Vehiculo VehiculoUpdate) {
+    public void update(Licencia LicenciaUpdate) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    
 }
