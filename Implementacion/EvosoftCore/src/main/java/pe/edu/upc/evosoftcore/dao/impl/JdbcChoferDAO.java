@@ -44,6 +44,10 @@ public class JdbcChoferDAO implements ChoferDAO {
             ps.setString(4, chofer.getApellido());
             ps.setInt(5, chofer.getTelefono());
             ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if(rs.next()){
+                chofer.setIdChofer(rs.getInt(1));
+            }
             ps.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -123,6 +127,58 @@ public class JdbcChoferDAO implements ChoferDAO {
             rs.close();
             ps.close();
             return choferes;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
+
+    @Override
+    public void update(Chofer chofer) {
+         String sql = "UPDATE chofer SET idlicencia=?, nombre=?, apellido=?, telefono=? "
+                 + "WHERE idchofer=?";
+
+        Connection conn = null;
+
+        try {
+            conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareCall(sql);
+            ps.setInt(1, chofer.getLicencia().getIdLicencia());
+            ps.setString(2, chofer.getNombre());
+            ps.setString(3, chofer.getApellido());
+            ps.setInt(4, chofer.getTelefono());
+            ps.setInt(5, chofer.getIdChofer());
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
+
+    @Override
+    public void delete(Chofer chofer) {
+        String sql = "DELETE FROM chofer WHERE idchofer = ?";
+         Connection conn = null;
+
+        try {
+            conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareCall(sql);
+            ps.setInt(1, chofer.getIdChofer());
+            ps.executeUpdate();
+            ps.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
