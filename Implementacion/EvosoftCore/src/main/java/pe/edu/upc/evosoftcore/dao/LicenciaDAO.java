@@ -18,5 +18,5 @@ public interface LicenciaDAO {
     public Licencia findByVehiculoId(int licenciaID);
     public List<Licencia> listLicencia();
     public void update(Licencia LicenciaUpdate);
-    
+     public void delete(Licencia licencia);
 }

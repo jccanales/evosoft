@@ -11,7 +11,7 @@ import pe.edu.upc.evosoftcore.entity.Vehiculo;
 
 /**
  *
- * @author XxItz.D13g0xX
+ * @author Diego
  */
 public interface VehiculoDAO {
     public void insert(Vehiculo vehiculo);
