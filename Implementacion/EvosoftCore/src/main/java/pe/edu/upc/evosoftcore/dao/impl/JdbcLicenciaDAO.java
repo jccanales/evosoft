@@ -14,6 +14,7 @@ import pe.edu.upc.evosoftcore.entity.Licencia;
  *
  * @author Diego
  */
+
 public class JdbcLicenciaDAO implements LicenciaDAO {
 
     private DataSource dataSource;
