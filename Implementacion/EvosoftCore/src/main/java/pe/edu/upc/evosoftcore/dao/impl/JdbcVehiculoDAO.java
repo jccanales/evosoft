@@ -22,6 +22,7 @@ import pe.edu.upc.evosoftcore.entity.Vehiculo;
  *
  * @author Diego
  */
+
 public class JdbcVehiculoDAO implements VehiculoDAO {
     private DataSource dataSource;
     
@@ -46,6 +47,11 @@ public class JdbcVehiculoDAO implements VehiculoDAO {
 
     @Override
     public void update(Vehiculo VehiculoUpdate) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete(Vehiculo vehiculo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
