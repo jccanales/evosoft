@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package pe.edu.upc.evosoftcore.dao;
 
 import java.util.List;
@@ -14,11 +13,15 @@ import pe.edu.upc.evosoftcore.entity.Chofer;
  * @author Jean Carlo
  */
 public interface ChoferDAO {
-    
+
     public void insert(Chofer chofer);
+
     public void update(Chofer chofer);
+
     public void delete(Chofer chofer);
+
     public Chofer findByChoferId(int choferId);
+
     public List<Chofer> listChofer();
-    
+
 }
