@@ -32,7 +32,39 @@ public class JdbcVehiculoDAO implements VehiculoDAO {
     
     @Override
     public void insert(Vehiculo vehiculo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       String sql = "INSERT INTO vehiculo "
+                + "(idvehiculo, placa, modelo,anio, cantidadEjes, estado) VALUES (?,?,?,?,?,?)";
+
+        Connection conn = null;
+
+        try {
+            conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareCall(sql);
+            ps.setInt(1, vehiculo.getIdVehiculo());
+            ps.setString(2, vehiculo.getPlaca());
+            ps.setString(3, vehiculo.getModelo());
+            ps.setInt(4, vehiculo.getCantidadEjes());
+            ps.setString(3, vehiculo.getEstado());
+
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            
+            if (rs.next()) {
+                vehiculo.setIdVehiculo(rs.getInt(1));
+            }
+            
+            ps.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        
     }
 
     @Override
