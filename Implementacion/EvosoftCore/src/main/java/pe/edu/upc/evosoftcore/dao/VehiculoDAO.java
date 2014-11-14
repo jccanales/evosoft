@@ -15,8 +15,8 @@ import pe.edu.upc.evosoftcore.entity.Vehiculo;
 public interface VehiculoDAO {
 
     public void insert(Vehiculo vehiculo);
-    public Vehiculo findByVehiculoId(int vehiculoId);
-    public List<Vehiculo> listVehiculo();
+    public Vehiculo findById(int id);
+    public List<Vehiculo> listar();
     public void update(Vehiculo vehiculo);
     public void delete(Vehiculo vehiculo);
     

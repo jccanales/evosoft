@@ -76,7 +76,7 @@ public class ChoferTest {
     }
 
     public void ListarChofer() {
-        List<Chofer> choferes = choferDAO.listChofer();
+        List<Chofer> choferes = choferDAO.listar();
         for (Chofer c : choferes) {
             System.out.println(c.toString());
         }

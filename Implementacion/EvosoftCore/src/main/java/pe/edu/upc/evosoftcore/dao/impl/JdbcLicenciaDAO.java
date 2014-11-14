@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
-import pe.edu.upc.evosoftcore.dao.Dao;
 import pe.edu.upc.evosoftcore.dao.LicenciaDAO;
 import pe.edu.upc.evosoftcore.entity.Licencia;
 
@@ -16,7 +15,7 @@ import pe.edu.upc.evosoftcore.entity.Licencia;
  * @author Diego
  */
 
-public class JdbcLicenciaDAO implements Dao<Licencia> {
+public class JdbcLicenciaDAO implements LicenciaDAO {
 
     private DataSource dataSource;
 

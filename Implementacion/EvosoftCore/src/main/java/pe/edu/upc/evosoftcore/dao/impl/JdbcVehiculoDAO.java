@@ -10,13 +10,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
-import pe.edu.upc.evosoftcore.dao.Dao;
 import pe.edu.upc.evosoftcore.dao.VehiculoDAO;
-import pe.edu.upc.evosoftcore.entity.Chofer;
-import pe.edu.upc.evosoftcore.entity.Licencia;
 import pe.edu.upc.evosoftcore.entity.Vehiculo;
 
 /**
@@ -24,7 +20,7 @@ import pe.edu.upc.evosoftcore.entity.Vehiculo;
  * @author Diego
  */
 
-public class JdbcVehiculoDAO implements Dao<Vehiculo> {
+public class JdbcVehiculoDAO implements VehiculoDAO {
     private DataSource dataSource;
     
     public void setDataSource(DataSource dataSource){

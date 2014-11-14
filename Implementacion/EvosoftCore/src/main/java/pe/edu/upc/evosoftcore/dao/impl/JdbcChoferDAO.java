@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
 import pe.edu.upc.evosoftcore.dao.ChoferDAO;
-import pe.edu.upc.evosoftcore.dao.Dao;
 import pe.edu.upc.evosoftcore.entity.Chofer;
 import pe.edu.upc.evosoftcore.entity.Licencia;
 
@@ -22,7 +21,7 @@ import pe.edu.upc.evosoftcore.entity.Licencia;
  * @author Jean Carlo
  */
 
-public class JdbcChoferDAO implements Dao<Chofer> {
+public class JdbcChoferDAO implements ChoferDAO {
 
     private DataSource dataSource;
 

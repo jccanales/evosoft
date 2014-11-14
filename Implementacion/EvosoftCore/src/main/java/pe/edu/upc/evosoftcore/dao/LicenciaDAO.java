@@ -16,9 +16,9 @@ import pe.edu.upc.evosoftcore.entity.Licencia;
 public interface LicenciaDAO {
 
     public void insert(Licencia licencia);
-    public Licencia findByVehiculoId(int licenciaID);
-    public List<Licencia> listLicencia();
-    public void update(Licencia LicenciaUpdate);
+    public Licencia findById(int id);
+    public List<Licencia> listar();
+    public void update(Licencia licencia);
     public void delete(Licencia licencia);
     
 }
