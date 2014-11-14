@@ -16,8 +16,8 @@ public interface VehiculoDAO {
 
     public void insert(Vehiculo vehiculo);
     public Vehiculo findByVehiculoId(int vehiculoId);
-    public List<Vehiculo> listVehiclo();
-    public void update(Vehiculo VehiculoUpdate);
+    public List<Vehiculo> listVehiculo();
+    public void update(Vehiculo vehiculo);
     public void delete(Vehiculo vehiculo);
     
 }
