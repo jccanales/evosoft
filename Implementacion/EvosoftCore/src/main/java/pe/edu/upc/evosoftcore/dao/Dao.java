@@ -10,6 +10,7 @@ import java.util.List;
 /**
  *
  * @author Jean Carlo
+ * @param <E> Entidad
  */
 public interface Dao<E> {
 

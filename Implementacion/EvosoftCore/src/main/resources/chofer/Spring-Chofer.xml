@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
  
-	<bean id="ChoferDAO" class="pe.edu.upc.evosoftcore.dao.impl.JdbcChoferDAO">
+	<bean id="Dao" class="pe.edu.upc.evosoftcore.dao.impl.JdbcChoferDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
  

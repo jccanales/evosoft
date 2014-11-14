@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
+import pe.edu.upc.evosoftcore.dao.Dao;
 import pe.edu.upc.evosoftcore.dao.LicenciaDAO;
 import pe.edu.upc.evosoftcore.entity.Licencia;
 
@@ -15,7 +16,7 @@ import pe.edu.upc.evosoftcore.entity.Licencia;
  * @author Diego
  */
 
-public class JdbcLicenciaDAO implements LicenciaDAO {
+public class JdbcLicenciaDAO implements Dao<Licencia> {
 
     private DataSource dataSource;
 
@@ -56,7 +57,7 @@ public class JdbcLicenciaDAO implements LicenciaDAO {
     }
 
     @Override
-    public Licencia findByVehiculoId(int licenciaID) {
+    public Licencia findById(int id) {
         String sql = "SELECT * FROM licencia WHERE idLicencia = ?";
 
         Connection conn = null;
@@ -64,7 +65,7 @@ public class JdbcLicenciaDAO implements LicenciaDAO {
         try {
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareCall(sql);
-            ps.setInt(1, licenciaID);
+            ps.setInt(1, id);
             Licencia licencia = null;
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -90,7 +91,7 @@ public class JdbcLicenciaDAO implements LicenciaDAO {
     }
 
     @Override
-    public List<Licencia> listLicencia() {
+    public List<Licencia> listar() {
         String sql = "SELECT * FROM licencia";
         List<Licencia> licencias = null;
 

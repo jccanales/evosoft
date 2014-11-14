@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
+import pe.edu.upc.evosoftcore.dao.Dao;
 import pe.edu.upc.evosoftcore.dao.VehiculoDAO;
 import pe.edu.upc.evosoftcore.entity.Chofer;
 import pe.edu.upc.evosoftcore.entity.Licencia;
@@ -23,7 +24,7 @@ import pe.edu.upc.evosoftcore.entity.Vehiculo;
  * @author Diego
  */
 
-public class JdbcVehiculoDAO implements VehiculoDAO {
+public class JdbcVehiculoDAO implements Dao<Vehiculo> {
     private DataSource dataSource;
     
     public void setDataSource(DataSource dataSource){
@@ -68,7 +69,7 @@ public class JdbcVehiculoDAO implements VehiculoDAO {
     }
 
     @Override
-    public Vehiculo findByVehiculoId(int vehiculoId) {
+    public Vehiculo findById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -84,7 +85,7 @@ public class JdbcVehiculoDAO implements VehiculoDAO {
     }
 
     @Override
-    public List<Vehiculo> listVehiculo() {
+    public List<Vehiculo> listar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
 import pe.edu.upc.evosoftcore.dao.ChoferDAO;
+import pe.edu.upc.evosoftcore.dao.Dao;
 import pe.edu.upc.evosoftcore.entity.Chofer;
 import pe.edu.upc.evosoftcore.entity.Licencia;
 
@@ -21,7 +22,7 @@ import pe.edu.upc.evosoftcore.entity.Licencia;
  * @author Jean Carlo
  */
 
-public class JdbcChoferDAO implements ChoferDAO {
+public class JdbcChoferDAO implements Dao<Chofer> {
 
     private DataSource dataSource;
 
@@ -63,7 +64,7 @@ public class JdbcChoferDAO implements ChoferDAO {
     }
     
     @Override
-    public Chofer findByChoferId(int choferId) {
+    public Chofer findById(int id) {
         String sql = "SELECT * FROM chofer WHERE idchofer = ?";
 
         Connection conn = null;
@@ -71,7 +72,7 @@ public class JdbcChoferDAO implements ChoferDAO {
         try {
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareCall(sql);
-            ps.setInt(1, choferId);
+            ps.setInt(1, id);
             Chofer chofer = null;
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -100,7 +101,7 @@ public class JdbcChoferDAO implements ChoferDAO {
     }
 
     @Override
-    public List<Chofer> listChofer() {
+    public List<Chofer> listar() {
         String sql = "SELECT * FROM chofer";
         List<Chofer> choferes = null;
 
