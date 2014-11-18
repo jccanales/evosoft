@@ -1,0 +1,8 @@
+# /vagrant/hieradata/appserver.home.yaml
+---
+username: root
+password: root
+classes:
+#   - jrockit::usergroup
+#   - jrockit::install
+#   - mysql

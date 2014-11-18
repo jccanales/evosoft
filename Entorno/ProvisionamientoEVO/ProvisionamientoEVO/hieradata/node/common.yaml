@@ -1,0 +1,11 @@
+---
+oracle_base_home: "/u01/app/oracle"
+mdw_home: "/u01/app/oracle/mdw"
+install_group: "dba"
+install_user: "oracle"
+architecture: "x64"
+java_product_name: "jrockit-jdk"
+java_version: "1.6.0_45"
+jrockit_version: "R28.2.7-4.1.0"
+java_home_link: "/u01/app/oracle/java"
+wls_version: '1036'

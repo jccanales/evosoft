@@ -1,0 +1,3 @@
+node 'dbserver' {
+	Class [ 'mysql' ]
+}

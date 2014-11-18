@@ -1,0 +1,18 @@
+# /vagrant/hieradata/webserver.home.yaml
+---
+tomcat_admin: 'tomcat'
+tomcat_pwd: 'tomcat'
+tomcat_http_port: 80
+tomcat_https_port: 81
+tomcat_version: '8.0.12'
+install_group: 'oinstall'
+install_user: 'oracle'
+java_product_name: 'jdk'
+java_version: '8u5'
+architecture: 'x64'
+oracle_home: '/u01/app/oracle'
+java_home_link: '/usr/java/jdk'
+classes:
+   - jrockit::usergroup
+   - jrockit::install8
+#   - tomcat
