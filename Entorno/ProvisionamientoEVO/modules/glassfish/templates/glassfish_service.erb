@@ -1,0 +1,20 @@
+#!/bin/bash
+# description: Glassfish Start Stop Restart
+# processname: glassfish
+# chkconfig: 234 20 80
+GLASSFISH_HOME=<%= @install_directory %>/glassfish
+export GLASSFISH_HOME
+
+case $1 in
+start)
+sh $GLASSFISH_HOME/bin/asadmin start-domain <%= @domain_name %> >/dev/null
+;;
+stop)
+sh $GLASSFISH_HOME/bin/asadmin stop-domain <%= @domain_name %> >/dev/null
+;;
+restart)
+sh $GLASSFISH_HOME/bin/asadmin stop-domain <%= @domain_name %> >/dev/null
+sh $GLASSFISH_HOME/bin/asadmin start-domain <%= @domain_name %> >/dev/null
+;;
+esac
+exit 0

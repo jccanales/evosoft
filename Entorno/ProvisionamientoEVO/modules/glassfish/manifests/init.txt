@@ -1,0 +1,25 @@
+class glassfish {
+
+	$install_directory = hiera('install_directory','/u01/app/oracle/glassfish')
+	
+	$answer_file = '/tmp/gf_answer.txt'
+	file { $answer_file:
+		content => template('glassfish/gf-answer.erb')
+	}
+	
+	$install_file = "/vagrant_data/glassfish/ogs-3.1.2.2-unix.sh"
+	file { $install_file:
+		ensure => present,
+		mode => "+x"
+	}
+	
+	exec { 'install_jdk':
+		command => 'rpm -i /vagrant_data/jdk/jdk-8u5-linux-x64.rpm',
+	}
+	
+	exec { 'install_glassfish':
+		command => ".${install_file} -a gf_answer.txt -s",
+		user => 'root',
+		require => [File[$answer_file], File[$install_file], Exec['install_jdk']]
+	}
+}

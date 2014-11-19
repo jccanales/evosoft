@@ -1,0 +1,5 @@
+#!/bin/sh
+#<%= @install_directory %>/bin/asadmin create-service <%= @domain_name %>
+service <%= @glassfish_service %> start
+<%= @install_directory %>/bin/asadmin enable-secure-admin
+service <%= @glassfish_service %> restart
