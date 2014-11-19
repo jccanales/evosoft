@@ -10,7 +10,5 @@ package pe.edu.upc.evosoftcore.core.service.base;
  * @author Jean Carlo
  */
 public interface BaseService<T> {
-
     T getRepository();
-
 }
