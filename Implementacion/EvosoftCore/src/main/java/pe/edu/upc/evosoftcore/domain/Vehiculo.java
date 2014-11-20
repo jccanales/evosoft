@@ -3,36 +3,61 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package pe.edu.upc.evosoftcore.domain;
+
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Jean Carlo
  */
-public class Vehiculo {
-    private int idVehiculo;
-    private Chofer chofer;
+@Entity
+@Table(name = "vehiculo")
+public class Vehiculo implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idVehiculo")
+    private Integer idVehiculo;
+    @JoinColumn(name = "idChofer", referencedColumnName = "idChofer")
+    @ManyToOne(optional = false)
+    private Chofer idChofer = new Chofer();
+    @Column(name = "placa")
     private String placa;
+    @Column(name = "modelo")
     private String modelo;
+    @Column(name = "anio")
     private String anio;
-    private int cantidadEjes;
+    @Column(name = "cantidadEjes")
+    private Integer cantidadEjes;
+    @Column(name = "estado")
     private String estado;
 
-    public int getIdVehiculo() {
+    public Integer getIdVehiculo() {
         return idVehiculo;
     }
 
-    public void setIdVehiculo(int idVehiculo) {
+    public void setIdVehiculo(Integer idVehiculo) {
         this.idVehiculo = idVehiculo;
     }
 
     public Chofer getChofer() {
-        return chofer;
+        return idChofer;
     }
 
     public void setChofer(Chofer chofer) {
-        this.chofer = chofer;
+        this.idChofer = chofer;
     }
 
     public String getPlaca() {
@@ -59,11 +84,11 @@ public class Vehiculo {
         this.anio = anio;
     }
 
-    public int getCantidadEjes() {
+    public Integer getCantidadEjes() {
         return cantidadEjes;
     }
 
-    public void setCantidadEjes(int cantidadEjes) {
+    public void setCantidadEjes(Integer cantidadEjes) {
         this.cantidadEjes = cantidadEjes;
     }
 
@@ -74,6 +99,24 @@ public class Vehiculo {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
+
+    @Override
+    public int hashCode() {
+        Integer hash = 0;
+        hash += (idVehiculo != null ? idVehiculo.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Vehiculo)) {
+            return false;
+        }
+        Vehiculo other = (Vehiculo) object;
+        if ((this.idVehiculo == null && other.idVehiculo != null) || (this.idVehiculo != null && !this.idVehiculo.equals(other.idVehiculo))) {
+            return false;
+        }
+        return true;
+    }
 }

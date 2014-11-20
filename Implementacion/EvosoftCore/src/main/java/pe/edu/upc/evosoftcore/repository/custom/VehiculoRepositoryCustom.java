@@ -9,7 +9,8 @@ package pe.edu.upc.evosoftcore.repository.custom;
  *
  * @author Jean Carlo
  */
-public interface ChoferRepositoryCustom {
+public interface VehiculoRepositoryCustom {
 
     int metodoPersonalizado();
+
 }

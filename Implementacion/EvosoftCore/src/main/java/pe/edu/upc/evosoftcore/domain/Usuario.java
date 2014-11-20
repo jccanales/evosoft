@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package pe.edu.upc.evosoftcore.domain;
 
 import java.io.Serializable;
@@ -22,6 +21,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -54,20 +55,20 @@ public class Usuario implements Serializable {
 
     public void setClave(String clave) {
         this.clave = clave;
-    }    
+    }
 
     @Override
     public String toString() {
         return "pe.edu.upc.evosoftcore.domain.Usuario[ idUsuario=" + idUsuario + "]";
     }
 
-     @Override
+    @Override
     public int hashCode() {
         int hash = 0;
         hash += (idUsuario != null ? idUsuario.hashCode() : 0);
         return hash;
     }
-    
+
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -80,6 +81,5 @@ public class Usuario implements Serializable {
         }
         return true;
     }
-    
-    
+
 }

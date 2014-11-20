@@ -5,14 +5,15 @@
  */
 package pe.edu.upc.evosoftcore.core.service;
 
-import pe.edu.upc.evosoftcore.repository.ChoferRepository;
 import pe.edu.upc.evosoftcore.core.service.base.BaseService;
+import pe.edu.upc.evosoftcore.repository.VehiculoRepository;
 
 /**
  *
  * @author Jean Carlo
  */
-public interface ChoferService extends BaseService<ChoferRepository> {
+public interface VehiculoService extends BaseService<VehiculoRepository> {
 
     void delete(Integer id);
+
 }

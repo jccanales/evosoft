@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pe.edu.upc.evosoftcore.core.service.ChoferService;
-import pe.edu.upc.evosoftcore.core.service.LicenciaService;
+import pe.edu.upc.evosoftcore.core.service.VehiculoService;
 import pe.edu.upc.evosoftcore.domain.Chofer;
-import pe.edu.upc.evosoftcore.domain.Licencia;
+import pe.edu.upc.evosoftcore.domain.Vehiculo;
 
 /**
  *
@@ -21,28 +21,29 @@ import pe.edu.upc.evosoftcore.domain.Licencia;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/java//pe/edu/upc/evosoftcore/configuration/SpringContext.xml"})
-public class ChoferTest {
+
+public class VehiculoTest {
 
     @Autowired
-    private ChoferService choferService;
+    private VehiculoService vehiculoService;
     @Autowired
-    private LicenciaService licenciaService;
-    
+    private ChoferService choferService;
+
     @Test
     public void Insertar() {
         try {
-            Licencia l = licenciaService.getRepository().findOne(1);
-            Chofer c = new Chofer();
-            c.setNombre("Chofer");
-            c.setApellido("Spring");
-            c.setTelefono(888888);
-            c.setIdLicencia(l);
-            choferService.getRepository().save(c);
-            System.out.println("Cantidad de choferes: " + choferService.getRepository().metodoPersonalizado());
-
+            Chofer c = choferService.getRepository().findOne(3);
+            Vehiculo v = new Vehiculo();
+            v.setAnio("2015");
+            v.setCantidadEjes(5);
+            v.setEstado("Spring");
+            v.setModelo("MBW");
+            v.setPlaca("ABC123");
+            v.setChofer(c);
+            vehiculoService.getRepository().save(v);
+            System.out.println("Cantidad de vehiculos: " + vehiculoService.getRepository().metodoPersonalizado());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }
