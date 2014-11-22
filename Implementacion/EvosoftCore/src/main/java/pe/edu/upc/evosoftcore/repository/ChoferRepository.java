@@ -14,5 +14,4 @@ import pe.edu.upc.evosoftcore.repository.custom.ChoferRepositoryCustom;
  * @author Jean Carlo
  */
 public interface ChoferRepository extends CrudRepository<Chofer, Integer>, ChoferRepositoryCustom {
-
 }

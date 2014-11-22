@@ -82,13 +82,13 @@ public class Chofer implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.edu.upc.evosoftcore.domain.Chofer[ idChofer=" + idChofer + " ]";
+        return "pe.edu.upc.evosoftcore.domain.Chofer[ idChofer=" +  idChofer  + " ]";
     }
     
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idChofer != null ? idChofer.hashCode() : 0);
+        hash += (idChofer != null ? idChofer.hashCode(): 0);
         return hash;
     }
     
