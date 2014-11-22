@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package pe.edu.upc.evosoftcore.core.service.base;
-
 /**
  *
  * @author Jean Carlo

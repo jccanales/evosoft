@@ -13,6 +13,5 @@ import pe.edu.upc.evosoftcore.core.service.base.BaseService;
  * @author Jean Carlo
  */
 public interface ChoferService extends BaseService<ChoferRepository> {
-
     void delete(Integer id);
 }
