@@ -1,0 +1,7 @@
+# /vagrant/hieradata/lbserver.home.yaml
+---
+http_port: 80
+#classes:
+#   - jrockit::usergroup
+#   - jrockit::install8
+#   - tomcat

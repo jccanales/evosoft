@@ -30,7 +30,7 @@ class glassfish {
 	}
 	
 	exec { 'install_jdk':
-		command => 'rpm -i /vagrant_data/jdk/jdk-8u25-linux-x64.rpm',
+		command => 'rpm -i /vagrant_data/jdk/jdk-8u5-linux-x64.rpm',
 	}
 	
 	exec { 'install_glassfish':

@@ -2,7 +2,6 @@
 ---
 username: root
 password: root
+mysql_port: 3306
 classes:
-#   - jrockit::usergroup
-#   - jrockit::install
-#   - mysql
+   - mysql::initstd

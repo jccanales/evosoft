@@ -13,13 +13,13 @@ class jrockit::install7 (
 	$jrockit_version = hiera('jrockit_version', "R28.2.7-4.1.0"),
 	$architecture=hiera('architecture',"ia32")) 
 {
-	$oracle_home = hiera('oracle_base_home')
-	$java_home_link = hiera('java_home_link')
-	$CFG = 'jrockit-silent'
+	$oracle_home = hiera('oracle_home')
 
 	# Variable Declaration
-	$pkg = 	"${java_product_name}${java_version}-${jrockit_version}-linux-${architecture}"
-	$java_home = "/usr/java/jdk1.7.0_60"
+	$pkg = 	"${java_product_name}-${java_version}-linux-${architecture}"
+	$java_home = "${oracle_home}/java/${pkg}"
+	$java_home_link = "/usr/java/jdk${java_version}"
+	$CFG = 'jrockit-silent'
  
 	Exec { 
 		path 	=> "/usr/bin:/bin:/usr/sbin:/sbin:${java_home}/bin",
@@ -28,32 +28,14 @@ class jrockit::install7 (
 	}
 	
 	exec { 'create_oracle_directory':
-		command	=>	"mkdir -p ${oracle_home} && chown ${install_user}:${install_group} ${oracle_home}",
+		command	=>	"mkdir -p ${java_home} && chown ${install_user}:${install_group} ${java_home}",
 		user	=> 	'root',
 	}	
 	
 	exec { 'install_jdk':
-		command => "sudo rpm -ivh /vagrant_data/jdk/jdk-7u60-linux-x64.rpm",
-		user	=>	'root',
+		command => "sudo rpm -ivh /vagrant_data/jdk/${pkg}.rpm",
+		cwd => $java_home,
+		user	=> 	'root',
 		require => Exec['create_oracle_directory']
-	}
-	
-	file { $java_home_link:
-		ensure => link,
-		target => $java_home,
-		mode => 0755,
-		require => [Exec['install_jdk']]
-	}
-
-	exec { 'install alternatives':
-		command => "alternatives --install /usr/bin/java java ${java_home_link}/bin/java 17065",
-		require => File[$java_home_link],
-		user => 'root'
-	}
-
-	exec { 'set default java alternatives':
-		command => "alternatives --set java ${java_home_link}/bin/java",
-		require => Exec['install alternatives'],
-		user => 'root'
 	}
 }

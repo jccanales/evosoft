@@ -2,7 +2,17 @@
 ---
 username: root
 password: root
+glassfish_admin_port: 4848
+glassfish_admin_user: admin
+glassfish_http_port: 80
+glassfish_admin_user_pwd: welcome1
+oracle_home: /u01/app/oracle
+install_directory: glassfish
+java_product_name: jdk
+java_version: 7u60
+architecture: x64
+glassfish_domain: default
 classes:
-#   - jrockit::usergroup
-#   - jrockit::install
-#   - mysql
+   - jrockit::usergroup
+   - jrockit::install7
+   - glassfish::initcustom

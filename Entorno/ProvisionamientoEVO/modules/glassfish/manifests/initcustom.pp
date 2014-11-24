@@ -9,7 +9,6 @@ class glassfish::initcustom {
 
 	$install_dir = hiera('install_directory')
 	$glassfish_admin_user_pwd = hiera('glassfish_admin_user_pwd')
-	$glassfish_version = hiera('glassfish_version')
 	$glassfish_admin_port = hiera('glassfish_admin_port')
 	$glassfish_admin_user = hiera('glassfish_admin_user')
 	$glassfish_http_port = hiera('glassfish_http_port')
@@ -20,7 +19,6 @@ class glassfish::initcustom {
 	Exec {
 		path 	=> "/usr/bin:/bin:/usr/sbin:/sbin",
 		logoutput  => true,
-		timeout => 0,
 		user 	=> 'root'
 	}
 	
@@ -29,7 +27,7 @@ class glassfish::initcustom {
 		content => template('glassfish/gf_answer.erb')
 	}
 	
-	$install_file = "/vagrant_data/glassfish/ogs-${glassfish_version}-unix.sh"
+	$install_file = "/vagrant_data/glassfish/ogs-3.1.2.2-unix.sh"
 	file { $install_file:
 		ensure => present,
 		mode => "+x",
@@ -51,30 +49,8 @@ class glassfish::initcustom {
 		action => accept
 	}
 	
-	$glassfish_service = "glassfish_${domain_name}"
-	$glassfish_service_file = "/etc/init.d/${glassfish_service}"
-	file { $glassfish_service_file:
-		content => template('glassfish/glassfish_service.erb'),
-		mode => "+x",
-		owner => root
-	}
-
-	$configure_server = '/tmp/configure_server.sh'
-	file { $configure_server:
-		content => template('glassfish/configure_server.erb')
-	}
-		
-	exec { $configure_server:
-		command => "sh ${configure_server}",
-		require => [File[$glassfish_service_file], Exec['install_glassfish']]
-	}
-	
-	service { $glassfish_service:
-		ensure => running,
-		enable => true,
-		require => Exec[$configure_server]
-	}
-	
-# copy mysql jar
-# /u01/app/oracle/glassfish/glassfish/domains/default/lib/databases/	
+#	exec { 'create_service':
+#		command => "${install_directory}/bin/asadmin create-service ${domain_name}",
+#		require => Exec['install_glassfish']
+#	}
 }
