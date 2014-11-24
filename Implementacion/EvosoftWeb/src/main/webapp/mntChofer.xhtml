@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:loadBundle basename="titulos" var="titulos" />
+        <title>#{titulos.template_titulo}</title
+        <link href="img/logo.ico" rel="icon" type="image/x-icon" />
+        <h:outputStylesheet name="css/default.css" />
+    </h:head>
+    <!-- Para que muestre una pantalla de cargando cuando se haga algun registro -->
+    <p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/>  
+    <p:dialog modal="true" widgetVar="statusDialog" header="Cargando" draggable="false" closable="false">  
+        <p:graphicImage value="img/ajax-loader.gif" />  
+    </p:dialog>  
+    <!-- ========================================= -->
+    <h:body>
+        
+    </h:body>
+
+
+</html>

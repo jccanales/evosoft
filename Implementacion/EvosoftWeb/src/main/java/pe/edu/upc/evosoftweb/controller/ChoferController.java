@@ -8,11 +8,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
+import pe.edu.upc.evosoftcore.core.service.impl.ChoferServiceImpl;
+import pe.edu.upc.evosoftcore.core.service.impl.LicenciaServiceImpl;
+import pe.edu.upc.evosoftcore.core.service.impl.VehiculoServiceImpl;
+
 import pe.edu.upc.evosoftweb.util.UtilWeb;
 import pe.edu.upc.evosoftcore.domain.Chofer;
 import pe.edu.upc.evosoftcore.domain.Licencia;
 import pe.edu.upc.evosoftcore.domain.Vehiculo;
-import pe.edu.upc.evosoftcore.domain.Usuario;
 /**
  *
  * @author Richard
