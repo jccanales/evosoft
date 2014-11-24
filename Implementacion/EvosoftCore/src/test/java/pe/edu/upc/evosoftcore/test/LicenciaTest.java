@@ -29,9 +29,9 @@ public class LicenciaTest {
     public void Insertar() {
         try {
             Licencia l = licenciaService.getRepository().findOne(2);
-            l.setCategoria(null);
+            l.setCategoria("IIA");
             l.setFechaVencimiento(null);
-            l.setNumero(Integer.SIZE);
+            l.setNumero(12);
             
             licenciaService.getRepository().save(l);
             System.out.println("Cantidad de licencias" + licenciaService.getRepository().metodoPersonalizado());
