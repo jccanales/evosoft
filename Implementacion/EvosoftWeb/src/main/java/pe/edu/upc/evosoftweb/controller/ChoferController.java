@@ -9,9 +9,10 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
 import pe.edu.upc.evosoftweb.util.UtilWeb;
-import pe.edu.upc.evosoftcore.entity.Chofer;
-import pe.edu.upc.evosoftcore.entity.Licencia;
-import pe.edu.upc.evosoftcore.entity.Vehiculo;
+import pe.edu.upc.evosoftcore.domain.Chofer;
+import pe.edu.upc.evosoftcore.domain.Licencia;
+import pe.edu.upc.evosoftcore.domain.Vehiculo;
+import pe.edu.upc.evosoftcore.domain.Usuario;
 /**
  *
  * @author Richard
