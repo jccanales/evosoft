@@ -14,7 +14,7 @@ public final class UtilWeb {
         
     }
     
-    private static void mensajeError(String codigo, String mensaje){
+    public static void mensajeError(String codigo, String mensaje){
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, codigo, mensaje));
     }
 
