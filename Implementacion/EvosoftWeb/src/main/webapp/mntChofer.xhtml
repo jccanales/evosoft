@@ -9,7 +9,7 @@
 
     <h:head>
         <f:loadBundle basename="titulos" var="titulos" />
-        <title>#{titulos.template_titulo}</title
+        <title>#{titulos.template_titulo}</title>
         <link href="img/logo.ico" rel="icon" type="image/x-icon" />
         <h:outputStylesheet name="css/default.css" />
     </h:head>
@@ -20,7 +20,28 @@
     </p:dialog>  
     <!-- ========================================= -->
     <h:body>
-        
+        <h:form prependId="false">
+            <h:outputLabel value="#{ChoferController.iniciarMntChofer}" />
+            <p:panel header="Mantenimiento de Chofer" id="panelCabecera">
+                <table>
+                    <tr>
+                        <td width="10%"><img style="width: 80px; height: 60px" src="img/logo.png" alt="Logo" /></td>
+                        <td width="80%">#{titulos.template_empresa}</td>
+                    </tr>
+                </table>
+            </p:panel>
+            <p:panel id="panelCuerpo">
+                <h:panelGrid columns="4">
+                    <h:outputLabel value="#{titulos.template_filtro}: "/>
+                    <p:inputText id="txtFiltro" value="#{choferController.filtro}" label="Filtro" style="width: 500px" />
+                    <p:watermark for="txtFiltro" value="#{titulos.template_ingreseFiltro}"/>
+                    <p:commandButton actionListener="#{choferController.buscar}" ajax="true" update="tablaChoferes" value="#{titulos.template_filtrar}" />
+                </h:panelGrid>
+                <p:dataTable id="tablaChoferes" var="i"
+                             value="#{choferController.listaChofer}"
+            </p:panel>
+            
+        </h:form>
     </h:body>
 
 
