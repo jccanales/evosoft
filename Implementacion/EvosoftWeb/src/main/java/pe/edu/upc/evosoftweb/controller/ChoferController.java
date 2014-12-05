@@ -165,4 +165,98 @@ public class ChoferController {
         this.filtro = "";
         return "registrarChofer";
     }
+    
+    public String irActualizar(){
+        String rpta="";
+        if(this.choferSeleccionado != null && this.choferSeleccionado.getIdChofer() > 0){
+            this.listaChoferes.clear();
+            this.filtro = "";
+            this.choferGuardar = new Chofer ();
+            this.choferGuardar.setIdChofer(this.choferSeleccionado.getIdChofer());
+            this.choferGuardar.setNombre(this.choferSeleccionado.getNombre());
+            this.choferGuardar.setApellido(this.choferSeleccionado.getApellido());
+            this.choferGuardar.setTelefono(this.choferSeleccionado.getTelefono());
+            this.choferGuardar.setIdLicencia(this.choferSeleccionado.getIdLicencia());
+            rpta = "actualizarChofer";
+        }else{
+            UtilWeb.mensajeAdvertencia(MENSAJE_NOSELECCIONADO, MENSAJE_NOSELECCIONADO);
+        }
+        return rpta;
+    }
+
+    public Chofer getChoferGuardar() {
+        return choferGuardar;
+    }
+
+    public void setChoferGuardar(Chofer choferGuardar) {
+        this.choferGuardar = choferGuardar;
+    }
+
+    public Chofer getChoferSeleccionado() {
+        return choferSeleccionado;
+    }
+
+    public void setChoferSeleccionado(Chofer choferSeleccionado) {
+        this.choferSeleccionado = choferSeleccionado;
+    }
+
+    public String getIniciarMntChofer() {
+        this.limpiarMntChofer();
+        return iniciarMntChofer;
+    }
+
+    public void setIniciarMntChofer(String iniciarMntChofer) {
+        this.iniciarMntChofer = iniciarMntChofer;
+    }
+
+    public String getIniciarRegChofer() {
+        this.limpiarRegChofer();
+        return iniciarRegChofer;
+    }
+
+    public void setIniciarRegChofer(String iniciarRegChofer) {
+        this.iniciarRegChofer = iniciarRegChofer;
+    }
+
+    public String getIniciarActChofer() {
+        this.limpiarActChofer();
+        return iniciarActChofer;
+    }
+
+    public void setIniciarActChofer(String iniciarActChofer) {
+        this.iniciarActChofer = iniciarActChofer;
+    }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
+    }
+
+    public int getIdLicenciaSeleccionada() {
+        return idLicenciaSeleccionada;
+    }
+
+    public void setIdLicenciaSeleccionada(int idLicenciaSeleccionada) {
+        this.idLicenciaSeleccionada = idLicenciaSeleccionada;
+    }
+
+    public List<SelectItem> getListaLicencias() {
+        return listaLicencias;
+    }
+
+    public void setListaLicencias(List<SelectItem> listaLicencias) {
+        this.listaLicencias = listaLicencias;
+    }
+
+    public List<Chofer> getListaChoferes() {
+        return listaChoferes;
+    }
+
+    public void setListaChoferes(List<Chofer> listaChoferes) {
+        this.listaChoferes = listaChoferes;
+    }
+    
 }
