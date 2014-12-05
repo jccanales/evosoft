@@ -131,4 +131,38 @@ public class ChoferController {
             UtilWeb.mensajeError(MENSAJE_ERROR + e.getMessage(), MENSAJE_ERROR + e.getMessage());
         }
     }
+    
+    private void limpiarRegChofer() {
+        try {
+            this.choferGuardar = new Chofer();
+            this.choferSeleccionado = new Chofer();
+            this.listarLicencias();
+        } catch (Exception e) {
+            e.printStackTrace();
+            UtilWeb.mensajeError(MENSAJE_ERROR + e.getMessage(), MENSAJE_ERROR + e.getMessage());
+        }   
+    }
+    
+    private void limpiarActChofer(){
+        try {
+            this.choferSeleccionado = new Chofer();
+            this.listarLicencias();
+            this.idLicenciaSeleccionada = this.choferGuardar.getIdLicencia().getIdLicencia();
+        } catch (Exception e) {
+            e.printStackTrace();
+            UtilWeb.mensajeError(MENSAJE_ERROR + e.getMessage(), MENSAJE_ERROR + e.getMessage());
+        }
+    }
+    
+    public String irMantenimiento(){
+        this.listaChoferes.clear();
+        this.filtro = "";
+        return "mntChofer";
+    }
+    
+    public String irNuevo(){
+        this.listaChoferes.clear();
+        this.filtro = "";
+        return "registrarChofer";
+    }
 }
