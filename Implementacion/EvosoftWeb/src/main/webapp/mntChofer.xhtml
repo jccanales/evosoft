@@ -21,7 +21,7 @@
     <!-- ========================================= -->
     <h:body>
         <h:form prependId="false">
-            <h:outputLabel value="#{ChoferController.iniciarMntChofer}" />
+            <h:outputLabel value="#{choferController.iniciarMntChofer}" />
             <p:panel header="Mantenimiento de Chofer" id="panelCabecera">
                 <table>
                     <tr>
@@ -38,7 +38,7 @@
                     <p:commandButton actionListener="#{choferController.buscar}" ajax="true" update="tablaChoferes" value="#{titulos.template_filtrar}" />
                 </h:panelGrid>
                 <p:dataTable id="tablaChoferes" var="i"
-                             value="#{choferController.listaChofer}"
+                             value="#{choferController.listaChoferes}"
                              selection="#{choferController.choferSeleccionado}"
                              selectionMode="single" rowKey="#{i.idChofer}" rows="10"
                              paginator="true"
@@ -47,11 +47,28 @@
                     <f:facet name="header">
                         #{titulos.mntChofer_listaChofer}
                     </f:facet>
-                    <p:column headerText="#{titulos.mntChofer_codigo}">#{i.idChofer}</p:column>
+                    <p:column headerText="#{titulos.mntChofer_codigo}">#{i.idchofer}</p:column>
+                    <p:column headerText="#{titulos.mntChofer_licencia}">#{i.idLicencia.numero}</p:column>
                     <p:column headerText="#{titulos.mntChofer_nombre}">#{i.nombre}</p:column>
-                    
-                              
+                    <p:column headerText="#{titulos.mntChofer_apellido}">#{i.apellido}</p:column>
+                    <p:column headerText="#{titulos.mntChofer_telefono}">#{i.telefono}</p:column>
                 </p:dataTable>
+                <center>
+                    <h:panelGrid columns="3">
+                        <p:commandButton id="btnNuevo" value="#{titulos.template_nuevo}" action="#{choferController.irNuevo}" ajax="false" style="width: 150px"/>
+                        <p:commandButton id="btnActualizar" value="#{titulos.template_actualizar}" action="#{choferController.irActualizar}" ajax="false" style="width: 150px"/>
+                        <p:commandButton id="btnEliminar" value="#{titulos.template_eliminar}" actionListener="#{choferController.eliminar}" style="width: 150px"/> 
+                    </h:panelGrid>
+                </center>
+                <p:messages id="messages" showDetail="false" autoUpdate="true"/>
+            </p:panel>
+            <p:panel id="panelPie">
+                <table>
+                    <tr>
+                        <td><img src="img/copyright.png" alt="Evosoft" /></td>
+                        <td>#{titulos.template_pie}</td>
+                    </tr>
+                </table>
             </p:panel>
             
         </h:form>
